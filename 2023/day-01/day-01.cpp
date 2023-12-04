@@ -2,38 +2,46 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <map>
 
 void part1(std::vector<std::string> lines) {
     int total = 0;
 
     for(int i = 0; i < lines.size(); i++) {
-        std::string value1;
-        std::string value2;
-        bool value1found = false;
-
-        for(int j = 0; j < lines[i].size(); j++) {
-            if(isdigit(lines[i][j])) {
-                if(!value1found) {
-                    value1 = lines[i][j];
-                    value1found = true;
-                }
-                value2 = lines[i][j];
+        std::string value1 = "empty";
+        std::string value2 = "empty";
+        
+        for(int left = 0, right = lines[i].size() - 1; left < lines[i].size(); left++, right--) {
+            if( isdigit(lines[i][left]) && value1 == "empty") {
+            value1 = lines[i][left];
             }
+            if( isdigit(lines[i][right]) && value2 == "empty") {
+            value2 = lines[i][right];
+            };
         }
-        total += stoi(value1 + value2);
+    total += stoi(value1 + value2);
     }
-    std::cout << "total calibration: " << total << std::endl;
+std::cout << "part one total calibration: " << total << std::endl;
 }
 
 void part2(std::vector<std::string> lines) {
+    int total = 0;
 
-    // for(int k = 0; k < lines.size(); k++) {
-    //    if (lines[k].find("one") != std::string::npos) {
-    //     std::cout << "found!" << ' ' << lines[k] << std::endl;
-    //     }
-    // }
-
-
+    for(int i = 0; i < lines.size(); i++) {
+        std::string value1 = "empty";
+        std::string value2 = "empty";
+        
+        for(int left = 0, right = lines[i].size() - 1; left < lines[i].size(); left++, right--) {
+            if( isdigit(lines[i][left]) && value1 == "empty") {
+            value1 = lines[i][left];
+            }
+            if( isdigit(lines[i][right]) && value2 == "empty") {
+            value2 = lines[i][right];
+            };
+        }
+    total += stoi(value1 + value2);
+    }
+std::cout << "part two total calibration: " << total << std::endl;
 }
 
 int main() {
@@ -51,6 +59,6 @@ int main() {
 }
 
     part1(lines);   
-    // part2(lines);
+    part2(lines);
     return 0;
 }

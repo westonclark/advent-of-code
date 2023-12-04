@@ -67,6 +67,9 @@
     "memory": "cpp",
     "numeric": "cpp",
     "type_traits": "cpp",
-    "algorithm": "cpp"
+    "algorithm": "cpp",
+    "filesystem": "cpp",
+    "__tree": "cpp",
+    "map": "cpp"
   }
 }
