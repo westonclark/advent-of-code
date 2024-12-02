@@ -25,4 +25,7 @@ func main() {
 	for _, line := range lines {
 		fmt.Println(line)
 	}
+
+	fmt.Println("Part 1 result:", partOne(lines))
+	fmt.Println("Part 2 result:", partTwo(lines))
 }
