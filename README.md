@@ -1,5 +1,5 @@
-# advent-of-code
+# Advent of Code Solutions
 
-Advent of Code
-
-2023
+Langauges
+- 2023 C++
+- 2024 Golang
