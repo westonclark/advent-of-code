@@ -17,15 +17,12 @@ func partTwo(lines []string) int {
 func main() {
 	data, err := os.ReadFile("input.txt")
 	if err != nil {
-		fmt.Println("Error reading input file", err)
-		return
+		fmt.Fprintf(os.Stderr, "Error reading input file: %v\n", err)
+		os.Exit(1)
 	}
 
-	lines := strings.Split(string(data), "\n")
-	for _, line := range lines {
-		fmt.Println(line)
-	}
+	lines := strings.Split(strings.TrimSpace(string(data)), "\n")
 
-	fmt.Println("Part 1 result:", partOne(lines))
-	fmt.Println("Part 2 result:", partTwo(lines))
+	fmt.Printf("Part 1 result: %d\n", partOne(lines))
+	fmt.Printf("Part 2 result: %d\n", partTwo(lines))
 }
