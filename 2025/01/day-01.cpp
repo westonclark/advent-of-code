@@ -2,110 +2,89 @@
 #include <iostream>
 #include <vector>
 
-class PartOneDial {
+class Dial {
 public:
   int currentValue = 50;
-  int numberOfZeroes = 0;
 
-  void increment(int amount) {
-    for (int i = 0; i < amount; i++) {
-      currentValue++;
-
-      if (currentValue == 100) {
-        currentValue = 0;
-      }
-    }
-    if (currentValue == 0) {
-      numberOfZeroes++;
-    }
+  void increment() {
+    currentValue++;
+    if (currentValue == 100) {
+      currentValue = 0;
+    };
   };
 
-  void decrement(int amount) {
-    for (int i = 0; i < amount; i++) {
-      currentValue--;
-
-      if (currentValue == -1) {
-        currentValue = 99;
-      }
+  void decrement() {
+    currentValue--;
+    if (currentValue == -1) {
+      currentValue = 99;
     }
-    if (currentValue == 0) {
-      numberOfZeroes++;
-    }
-  };
-};
-
-class PartTwoDial {
-public:
-  int currentValue = 50;
-  int numberOfZeroes = 0;
-
-  void increment(int amount) {
-    for (int i = 0; i < amount; i++) {
-      if (currentValue == 0) {
-        numberOfZeroes++;
-      }
-      currentValue++;
-
-      if (currentValue == 100) {
-        currentValue = 0;
-      }
-    }
-  };
-
-  void decrement(int amount) {
-    for (int i = 0; i < amount; i++) {
-      if (currentValue == 0) {
-        numberOfZeroes++;
-      }
-      currentValue--;
-
-      if (currentValue == -1) {
-        currentValue = 99;
-      }
-    }
-  };
+  }
 };
 
 int solvePartOne(std::vector<std::string> lines) {
-  PartOneDial dial;
+  int numberOfZeroes = 0;
+  Dial dial;
 
   for (std::string line : lines) {
     char direction = line[0];
     line.erase(0, 1);
+    int amount = std::stoi(line);
 
     if (direction == 'L') {
-      dial.decrement(std::stoi(line));
-    } else if (direction == 'R') {
-      dial.increment(std::stoi(line));
-    } else {
-      std::cout << "could not parse direction: " << line;
+      for (int i = 0; i < amount; i++) {
+        dial.decrement();
+      }
+      if (dial.currentValue == 0) {
+        numberOfZeroes++;
+      }
+    }
+
+    if (direction == 'R') {
+      for (int i = 0; i < amount; i++) {
+        dial.increment();
+      }
+      if (dial.currentValue == 0) {
+        numberOfZeroes++;
+      }
     }
   }
 
-  return dial.numberOfZeroes;
+  return numberOfZeroes;
 }
 
 int solvePartTwo(std::vector<std::string> lines) {
-  PartTwoDial dial;
+  int numberOfZeroes = 0;
+  Dial dial;
 
   for (std::string line : lines) {
     char direction = line[0];
     line.erase(0, 1);
 
     if (direction == 'L') {
-      dial.decrement(std::stoi(line));
-    } else if (direction == 'R') {
-      dial.increment(std::stoi(line));
-    } else {
-      std::cout << "could not parse direction: " << line;
+      int amount = std::stoi(line);
+      for (int i = 0; i < amount; i++) {
+        dial.decrement();
+        if (dial.currentValue == 0) {
+          numberOfZeroes++;
+        }
+      }
+    }
+
+    if (direction == 'R') {
+      int amount = std::stoi(line);
+      for (int i = 0; i < amount; i++) {
+        dial.increment();
+        if (dial.currentValue == 0) {
+          numberOfZeroes++;
+        }
+      }
     }
   }
 
-  return dial.numberOfZeroes;
+  return numberOfZeroes;
 }
 
 int main() {
-
   std::vector<std::string> lines = readInputLines();
 
   auto solutionOne = solvePartOne(lines);
