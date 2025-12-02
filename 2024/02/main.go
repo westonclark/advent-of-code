@@ -20,7 +20,6 @@ func isSafeReport(levels []int) bool {
 		if abs(levels[i+1]-levels[i]) > 3 {
 			return false
 		}
-
 	}
 
 	// Check if increasing or decreasing
