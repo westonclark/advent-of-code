@@ -1,4 +1,4 @@
-#include "../utils/read-lines.cpp"
+#include "../utils/read-input.cpp"
 #include <iostream>
 #include <vector>
 
