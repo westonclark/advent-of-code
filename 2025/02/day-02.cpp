@@ -41,7 +41,7 @@ auto solvePartTwo(std::vector<std::string> ranges) {
       std::string currentValue = std::to_string(i);
 
       int minChunkLength = 1;
-      auto maxChunkLength = currentValue.length() / 2;
+      int maxChunkLength = currentValue.length() / 2;
       for (auto j = minChunkLength; j <= maxChunkLength; j++) {
         int currentChunkLength = j;
         std::string currentChunk = currentValue.substr(0, currentChunkLength);
