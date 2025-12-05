@@ -1,7 +1,5 @@
 #include "../utils/read-input.cpp"
-#include <cstddef>
 #include <iostream>
-#include <vector>
 
 auto solvePartOne(std::vector<std::string> ranges) {
   long long total = 0;

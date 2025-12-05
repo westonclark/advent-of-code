@@ -1,6 +1,5 @@
 #include "../utils/read-input.cpp"
 #include <iostream>
-#include <vector>
 
 class Dial {
 public:
